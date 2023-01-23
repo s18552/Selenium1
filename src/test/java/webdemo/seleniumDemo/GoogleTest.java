@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,7 +23,9 @@ public class GoogleTest {
 	@BeforeAll
 	public static void setUpDriver(){
 		System.setProperty("webdriver.msedge.driver", "resources/msedgedriver");
-		driver = new EdgeDriver();
+        EdgeOptions options= new EdgeOptions();
+        options.addArguments("--headless");
+		driver = new EdgeDriver(options);
 		// Implicity wait -> max czas na znalezienie elementu na stronie
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
